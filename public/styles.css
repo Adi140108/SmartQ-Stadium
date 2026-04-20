@@ -308,7 +308,40 @@ body {
 }
 
 /* ─── TOKENS LIST ─────────────────────── */
-.tokens-list { padding: .8rem; display: flex; flex-direction: column; gap: .7rem; max-height: 340px; overflow-y: auto; }
+.tokens-list { padding: .8rem; display: flex; flex-direction: column; gap: .7rem; max-height: 280px; overflow-y: auto; }
+
+/* ─── SCROLL WRAP & BUTTON ───────────── */
+.scroll-wrap {
+  position: relative;
+}
+.scroll-btn {
+  position: absolute;
+  bottom: .55rem;
+  left: .55rem;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .9rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: background .2s, color .2s, transform .15s;
+  line-height: 1;
+  padding: 0;
+}
+
+/* ─── STYLED SCROLLBARS ──────────────── */
+.tokens-list::-webkit-scrollbar,
+.comparison-bars::-webkit-scrollbar { width: 6px; }
+.tokens-list::-webkit-scrollbar-track,
+.comparison-bars::-webkit-scrollbar-track { background: var(--surface2); border-radius: 6px; }
+.tokens-list::-webkit-scrollbar-thumb,
+.comparison-bars::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; }
+.tokens-list::-webkit-scrollbar-thumb:hover,
+.comparison-bars::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
 .empty-state { text-align: center; color: var(--muted); font-size: .82rem; padding: 1.5rem .5rem; line-height: 1.7; }
 
 .token-card {
@@ -332,7 +365,7 @@ body {
 @keyframes blink { 50% { opacity: 0; } }
 
 /* ─── COMPARISON BARS ─────────────────── */
-.comparison-bars { padding: .9rem 1.1rem; display: flex; flex-direction: column; gap: .7rem; }
+.comparison-bars { padding: .9rem 1.1rem; display: flex; flex-direction: column; gap: .7rem; max-height: 280px; overflow-y: auto; }
 
 .comp-head { display: flex; justify-content: space-between; font-size: .78rem; margin-bottom: .3rem; }
 .comp-stall { font-weight: 600; }
