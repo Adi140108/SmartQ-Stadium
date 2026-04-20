@@ -122,3 +122,7 @@ python -m http.server 8080
 | ✅ Efficiency | Single-file DOM updates, minimal reflows, CSS transitions for animation |
 | ✅ Accessibility | Semantic HTML, contrast-compliant dark theme, icon + text labels |
 | ✅ Google Services | Google Fonts integrated; Firebase & Maps ready architecture |
+## ☁️ Google Cloud Integration
+- Deployed on Google Cloud Run
+- Uses Firestore for real-time data storage
+- Backend API built with Express.js
