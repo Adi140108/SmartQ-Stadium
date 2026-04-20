@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartQ Stadium – Smart Queue Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+<!-- ░░ HEADER ░░ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-icon">🏟️</span>
+      <div>
+        <div class="brand-name">SmartQ Stadium</div>
+        <div class="brand-sub">Live Queue Management</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="live-badge"><span class="pulse-dot"></span> LIVE</div>
+      <div class="time-display" id="timeDisplay"></div>
+    </div>
+  </div>
+</header>
+
+<!-- ░░ NOTIFICATION TOAST AREA ░░ -->
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- ░░ MAIN ░░ -->
+<main class="main-grid">
+
+  <!-- LEFT COLUMN -->
+  <div class="col-left">
+
+    <!-- Stats Row -->
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div>
+          <div class="stat-value" id="totalPeople">0</div>
+          <div class="stat-label">People Queuing</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🟢</div>
+        <div>
+          <div class="stat-value" id="lowQueues">0</div>
+          <div class="stat-label">Low Crowd Stalls</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⏱️</div>
+        <div>
+          <div class="stat-value" id="avgWait">0 min</div>
+          <div class="stat-label">Avg Wait Time</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🎫</div>
+        <div>
+          <div class="stat-value" id="tokensIssuedStat">0</div>
+          <div class="stat-label">Tokens Issued</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Suggestion Banner -->
+    <div id="suggestionBanner" class="suggestion-banner hidden">
+      <span class="suggestion-icon">💡</span>
+      <span id="suggestionText"></span>
+    </div>
+
+    <!-- Stall Cards -->
+    <section class="section-title">
+      <h2>🍔 Food & Facilities</h2>
+      <span class="section-note">Click "Join Queue" to get a token</span>
+    </section>
+    <div class="stalls-grid" id="stallsGrid"></div>
+
+    <!-- Stadium Map -->
+    <section class="section-title" style="margin-top:2rem">
+      <h2>🗺️ Stadium Layout</h2>
+    </section>
+    <div class="map-container" id="mapContainer"></div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="col-right">
+
+    <!-- My Tokens -->
+    <div class="panel">
+      <div class="panel-header">
+        <span>🎫 My Tokens</span>
+        <span class="token-count-badge" id="tokenCountBadge">0</span>
+      </div>
+      <div id="myTokensList" class="tokens-list">
+        <div class="empty-state">No tokens yet.<br/>Join a queue to get started!</div>
+      </div>
+    </div>
+
+    <!-- Queue Comparison -->
+    <div class="panel">
+      <div class="panel-header">📊 Queue Comparison</div>
+      <div id="comparisonBars" class="comparison-bars"></div>
+    </div>
+
+    <!-- Activity Feed -->
+    <div class="panel">
+      <div class="panel-header">📡 Live Activity Feed</div>
+      <div id="activityFeed" class="activity-feed"></div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- ░░ JOIN MODAL ░░ -->
+<div id="joinModal" class="modal-overlay hidden">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-icon">🎫</div>
+    <h2 id="modalTitle" class="modal-title"></h2>
+    <div class="modal-token-box">
+      <div class="modal-token-label">Your Token Number</div>
+      <div id="modalToken" class="modal-token-num"></div>
+    </div>
+    <div class="modal-info-grid">
+      <div class="modal-info-item">
+        <div class="modal-info-label">Position in Queue</div>
+        <div id="modalPosition" class="modal-info-value"></div>
+      </div>
+      <div class="modal-info-item">
+        <div class="modal-info-label">Estimated Wait</div>
+        <div id="modalWait" class="modal-info-value"></div>
+      </div>
+    </div>
+    <div id="modalSuggestion" class="modal-suggestion hidden"></div>
+    <button class="btn-primary" onclick="closeModal()">Got it! Track in My Tokens →</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
