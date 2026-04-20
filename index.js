@@ -3,16 +3,21 @@ const path = require("path");
 
 const app = express();
 
-// Serve static files from public folder
-app.use(express.static(path.join(__dirname, "public")));
+// Serve static files
+app.use(express.static("public"));
 
-// Default route
+// Route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-const PORT = process.env.PORT || 8080;
+// 👇 THIS IS IMPORTANT
+module.exports = app;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// 👇 Only start server if NOT testing
+if (require.main === module) {
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
